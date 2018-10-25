@@ -8,7 +8,7 @@ Watches repositories for Pull Requests that need review. Requests a review from 
 
 ## Setup
 
-- `docker pull asr-docker-local.artifactory.umn.edu/prrr:0.1`
+- `docker pull asr-docker-local.artifactory.umn.edu/prrr:0.2.0`
 - Create a `docker-compose.yml` file that looks like
 
 ```yaml
@@ -16,7 +16,7 @@ version: '2'
 
 services:
   prrr:
-    image: asr-docker-local.artifactory.umn.edu/prrr:0.1
+    image: asr-docker-local.artifactory.umn.edu/prrr:0.2.0
     restart: always
     environment:
       - PRRR_ORGANIZATION=asrweb
