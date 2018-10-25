@@ -17,5 +17,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Everything!
 
-[Unrelased]: https://github.umn.edu/asrweb/prrr/compare/2a7cfffb26efc18fa0c58a29948606466eaa7e8f...master
-[0.1]: https://github.umn.edu/asrweb/prrr/compare/db51fd3fa75a0098f48f35db6d99f5116b89f6b5...217cfff
+[Unreleased]: https://github.umn.edu/asrweb/prrr/compare/v0.1.0...master
+[0.1.0]: https://github.umn.edu/asrweb/prrr/compare/db51fd3fa75a0098f48f35db6d99f5116b89f6b5...v0.1.0
