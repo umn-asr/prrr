@@ -8,55 +8,49 @@ Watches repositories for Pull Requests that need review. Requests a review from 
 
 ## Setup
 
-## GitHub Org and Repository
+- `docker pull asr-docker-local.artifactory.umn.edu/prrr:0.1`
+- Create a `docker-compose.yml` file that looks like
 
-Currently this only watches a single repository for a single org. Edit [`prrr.rb`] to set your organization and repository name. 
+```yaml
+version: '2'
 
-Example:
-
-```ruby
-organization = "asrweb"
-repository = "#{organization}/prrr"
+services:
+  prrr:
+    image: asr-docker-local.artifactory.umn.edu/prrr:0.1
+    restart: always
+    environment:
+      - PRRR_ORGANIZATION=asrweb
+      - PRRR_REPOSITORY=student_athletes
+      - PRRR_ACCESS_TOKEN=3102c1f0692be0986bbc0358f9285eb1fc99f334
+      - PRRR_REVIEW_TEAM=reviewers
 ```
 
-### GitHub Access Token
+A brief description of these environment variables and what they do:
+
+### Organization and Repository
+
+Currently this only watches a single repository for a single org. Set these values to be the organization and repository you want to monitor.
+
+### Access Token
+
+You will need a GitHub Personal Access token so that PRRR can interact with GitHub.
 
 - Go to your [Personal Access Token page](https://github.umn.edu/settings/tokens)
 - Click "Generate New Token"
 - Give your token a name, the exact name does not matter
 - Choose `repo`
 - Click the Generate Token button
-- Copy your token somewhere safe
-- Edit `prrr.rb` and replace `<your token here>` with your token
+- Place your token in the `docker-compose.yml` file
 
-Example:
+### Review Team
 
-```ruby
-access_token = "3102c1f0692be0986bbc0358f9285eb1fc99f334"
-```
+The team of GitHub users you want reviewing Pull Requests.
 
-### GitHub Reviewer Team
-
-- In your GitHub organization, [create a team](https://help.github.com/articles/creating-a-team/) of people you want to review Pull Requests. You can call this team whatever you'd like.
-
-Example:
-
-```ruby
-review_team = "reviewers"
-```
+In your GitHub organization, [create a team](https://help.github.com/articles/creating-a-team/) of people you want to review Pull Requests. You can call this team whatever you'd like. Put the team name in the `docker-compose.yml` file.
 
 ## Usage
 
-Requires that you have Docker installed and running.
-
-Two options:
-
-- `./run`
-
-or
-
-- `docker build -t prrrr .`
-- `docker run -it --rm prrr`
+`docker-compose up -d`
 
 ## Problems
 
@@ -66,4 +60,4 @@ Remove them from your GitHub Reviewer Team
 
 ### I want this bot to do something different!
 
-Gopher It. Pull requests are welcome.
+PRRRfect. Pull requests are welcome.

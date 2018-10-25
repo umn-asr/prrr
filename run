@@ -1,2 +1,0 @@
-docker build -t prrr .
-docker run -it --rm prrr
