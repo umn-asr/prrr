@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- Fixed Docker logging
+
 ### Added
 
 ## [0.1.0]

@@ -1,10 +1,13 @@
 #!/usr/bin/env ruby
 require "octokit"
+require "logger"
 
 organization = ENV.fetch("PRRR_ORGANIZATION")
 repository = "#{organization}/#{ENV.fetch("PRRR_REPOSITORY")}"
 access_token = ENV.fetch("PRRR_ACCESS_TOKEN")
 review_team = ENV.fetch("PRRR_REVIEW_TEAM")
+
+logger = Logger.new('/proc/1/fd/1')
 
 Octokit.configure do |c|
   c.api_endpoint = "https://github.umn.edu/api/v3/"
@@ -35,7 +38,7 @@ while true
     if !reviewed && !requested
       next_reviewer = reviewers.detect { |r| !r.casecmp(pr.user.login).zero? }
 
-      puts "#{repository} PR #{pr.number} assigned to #{next_reviewer}"
+      logger.info("#{pr.html_url} assigned to #{next_reviewer}")
 
       client.request_pull_request_review(repository, pr.number, reviewers: [next_reviewer])
 
