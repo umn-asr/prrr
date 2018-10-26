@@ -8,8 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- GitHub config now done in yaml, #8
-- Review Team members are now kept up to date, #7
+- GitHub config now done in yaml, [#8](https://github.umn.edu/asrweb/prrr/pulls/8)
+- Review Team members are now kept up to date, [#7](https://github.umn.edu/asrweb/prrr/pulls/7)
 
 ### Added
 
