@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.2]
+
 ### Fixed
 
 - Syntax bug when watching all repos
@@ -46,7 +48,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Everything!
 
-[Unreleased]: https://github.umn.edu/asrweb/prrr/compare/v0.3.1...master
+[Unreleased]: https://github.umn.edu/asrweb/prrr/compare/v0.3.2...master
+[0.3.2]: https://github.umn.edu/asrweb/prrr/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.umn.edu/asrweb/prrr/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.umn.edu/asrweb/prrr/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.umn.edu/asrweb/prrr/compare/db51fd3fa75a0098f48f35db6d99f5116b89f6b5...v0.2.0
