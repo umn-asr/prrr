@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.3.3]
+
 ### Fixed
 
 - Reviewer rotation was not rotating [#23](https://github.umn.edu/asrweb/prrr/issues/23)
@@ -52,7 +54,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Everything!
 
-[Unreleased]: https://github.umn.edu/asrweb/prrr/compare/v0.3.2...master
+[Unreleased]: https://github.umn.edu/asrweb/prrr/compare/v0.3.3...master
+[0.3.3]: https://github.umn.edu/asrweb/prrr/compare/v0.3.2...v0.3.3
 [0.3.2]: https://github.umn.edu/asrweb/prrr/compare/v0.3.1...v0.3.2
 [0.3.1]: https://github.umn.edu/asrweb/prrr/compare/v0.3.0...v0.3.1
 [0.3.0]: https://github.umn.edu/asrweb/prrr/compare/v0.2.0...v0.3.0
