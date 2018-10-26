@@ -8,6 +8,8 @@ Watches repositories for Pull Requests that need review. Requests a review from 
 
 ## Setup
 
+### `docker-compose.yml`
+
 - `docker pull asr-docker-local.artifactory.umn.edu/prrr:0.2.0`
 - Create a `docker-compose.yml` file that looks like
 
@@ -27,10 +29,6 @@ services:
 
 A brief description of these environment variables and what they do:
 
-### Organization and Repository
-
-Currently this only watches a single repository for a single org. Set these values to be the organization and repository you want to monitor.
-
 ### Access Token
 
 You will need a GitHub Personal Access token so that PRRR can interact with GitHub.
@@ -42,11 +40,37 @@ You will need a GitHub Personal Access token so that PRRR can interact with GitH
 - Click the Generate Token button
 - Place your token in the `docker-compose.yml` file
 
-### Review Team
+### `config.yml`
+
+Configure which GitHub organizations and repositories you want to observe with `config.yml`. The structure should be:
+
+```yml
+---
+org_name:
+  repositories:
+  - repo_name
+  review_team: name_of_team
+```
+
+A filled-out example is:
+
+```yml
+---
+asrweb:
+  repositories:
+  - prrr
+  review_team: reviewers
+```
+
+#### Review Team
 
 The team of GitHub users you want reviewing Pull Requests.
 
-In your GitHub organization, [create a team](https://help.github.com/articles/creating-a-team/) of people you want to review Pull Requests. You can call this team whatever you'd like. Put the team name in the `docker-compose.yml` file.
+In your GitHub organization, [create a team](https://help.github.com/articles/creating-a-team/) of people you want to review Pull Requests. You can call this team whatever you'd like.
+
+#### Limitations
+
+Currently you can only have one organization and one repository. Additional repositories will be ignored.
 
 ## Usage
 

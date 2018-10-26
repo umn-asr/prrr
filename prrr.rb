@@ -1,12 +1,16 @@
 #!/usr/bin/env ruby
 require "octokit"
 require "logger"
+require "yaml"
 require_relative "lib/reviewer_team"
 
-organization = ENV.fetch("PRRR_ORGANIZATION")
-repository = "#{organization}/#{ENV.fetch("PRRR_REPOSITORY")}"
+config = Psych.safe_load(File.read("./config.yml"))
+
 access_token = ENV.fetch("PRRR_ACCESS_TOKEN")
-review_team = ENV.fetch("PRRR_REVIEW_TEAM")
+
+organization = config.keys.first
+repository = "#{organization}/#{config[organization].fetch("repositories").first}"
+review_team = config[organization].fetch("review_team")
 
 logger = Logger.new('/proc/1/fd/1')
 
