@@ -26,6 +26,11 @@ class ReviewerTeam
     members.push(member)
   end
 
+  def refresh!
+    # Combines the current members with new members and preserves ordering
+    @members = (members | get_members) & get_members
+  end
+
   private
 
   attr_accessor :organization, :name, :client

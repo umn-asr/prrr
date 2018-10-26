@@ -29,6 +29,8 @@ fail "Review Team #{review_team} does not exist" unless reviewer_team.exists?
 fail "Review Team #{review_team} has no members" unless reviewer_team.has_members?
 
 while true
+  reviewer_team.refresh!
+
   client.pull_requests(repository, state: 'open').each do |pr|
     reviewed = client.pull_request_reviews(repository, pr.number).any?
     requested = client.pull_request_review_requests(repository, pr.number)[:users].any?
