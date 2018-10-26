@@ -5,7 +5,7 @@ module Prrr
     end
 
     def organizations
-      attributes.map do |org, attributes|
+      @organizations ||= attributes.map do |org, attributes|
         Organization.new(
           name: org,
           attributes: attributes,
