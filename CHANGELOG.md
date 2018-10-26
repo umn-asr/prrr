@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
-- Fixed Docker logging
+- GitHub config now done in yaml, #8
+- Review Team members are now kept up to date, #7
 
 ### Added
 
