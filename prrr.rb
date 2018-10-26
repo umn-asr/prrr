@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require "octokit"
 require "logger"
+require_relative "lib/reviewer_team"
 
 organization = ENV.fetch("PRRR_ORGANIZATION")
 repository = "#{organization}/#{ENV.fetch("PRRR_REPOSITORY")}"
@@ -14,21 +15,18 @@ Octokit.configure do |c|
 end
 
 client = Octokit::Client.new(:access_token => access_token)
+PRRR_CLIENT = client
 
 user = client.user
 user.login
 
 fail "Repostiory #{repository} does not exist" unless client.repository?(repository)
 
-reviewer_team = client.organization_teams(organization).detect  do |team|
-  team.name.casecmp(review_team).zero?
-end
+reviewer_team = ReviewerTeam.new(organization: organization, name: review_team)
 
-fail "Review Team #{review_team} does not exist" unless reviewer_team
+fail "Review Team #{review_team} does not exist" unless reviewer_team.exists?
 
-reviewers = client.team_members(reviewer_team.id).map {|member| member.login }
-
-fail "Review Team #{review_team} has no members" unless reviewers
+fail "Review Team #{review_team} has no members" unless reviewer_team.has_members?
 
 while true
   client.pull_requests(repository, state: 'open').each do |pr|
@@ -36,14 +34,13 @@ while true
     requested = client.pull_request_review_requests(repository, pr.number)[:users].any?
 
     if !reviewed && !requested
-      next_reviewer = reviewers.detect { |r| !r.casecmp(pr.user.login).zero? }
+      next_reviewer = reviewer_team.reviewer_for(pull_request: pr)
 
       logger.info("#{pr.html_url} assigned to #{next_reviewer}")
 
       client.request_pull_request_review(repository, pr.number, reviewers: [next_reviewer])
 
-      reviewers.delete(next_reviewer)
-      reviewers.push(next_reviewer)
+      reviewer_team.enqueue(member: next_reviewer)
     end
   end
   sleep 30
