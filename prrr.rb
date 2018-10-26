@@ -17,14 +17,17 @@ Octokit.configure do |c|
 end
 
 client = Octokit::Client.new(:access_token => access_token)
-PRRR_CLIENT = client
 
 client.auto_paginate = true
 user = client.user
 user.login
 
 @organizations = config.map do |org, attributes|
-  Organization.new(name: org, attributes: attributes)
+  Organization.new(
+    name: org,
+    attributes: attributes,
+    client: client,
+  )
 end
 
 while true
@@ -35,6 +38,7 @@ while true
     repositories = Repositories.build(
       organization: organization.name,
       included: organization.repositories,
+      client: client,
     )
 
     repositories.each do |repository|
