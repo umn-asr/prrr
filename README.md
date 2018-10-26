@@ -10,7 +10,7 @@ Watches repositories for Pull Requests that need review. Requests a review from 
 
 ### `docker-compose.yml`
 
-- `docker pull asr-docker-local.artifactory.umn.edu/prrr:0.2.0`
+- `docker pull asr-docker-local.artifactory.umn.edu/prrr:latest`
 - Create a `docker-compose.yml` file that looks like
 
 ```yaml
@@ -18,15 +18,15 @@ version: '2'
 
 services:
   prrr:
-    image: asr-docker-local.artifactory.umn.edu/prrr:0.2.0
+    image: asr-docker-local.artifactory.umn.edu/prrr:latest
     restart: always
+    volumes:
+      - ${PWD}/config.yml:/usr/src/app/config.yml
     environment:
       - PRRR_ACCESS_TOKEN=3102c1f0692be0986bbc0358f9285eb1fc99f334
 ```
 
-A brief description of these environment variables and what they do:
-
-### Access Token
+### PRRR Access Token
 
 You will need a GitHub Personal Access token so that PRRR can interact with GitHub.
 
