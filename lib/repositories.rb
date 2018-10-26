@@ -23,7 +23,7 @@ module Prrr
 
     def self.all(organization, client)
       repositories = client.organization_repositories(organization).map { |r| r.name }
-      new(organization, repositories)
+      new(organization, repositories, client)
     end
     private_class_method :all
   end
