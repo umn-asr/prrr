@@ -2,36 +2,22 @@
 require "octokit"
 require "logger"
 require "yaml"
+require_relative "lib/config"
+require_relative "lib/logger"
 require_relative "lib/organization"
 require_relative "lib/reviewer_team"
 require_relative "lib/repositories"
-
-config = Psych.safe_load(File.read("./config.yml"))
-
-access_token = ENV.fetch("PRRR_ACCESS_TOKEN")
-
-logger = Logger.new('/proc/1/fd/1')
 
 Octokit.configure do |c|
   c.api_endpoint = "https://github.umn.edu/api/v3/"
 end
 
-client = Octokit::Client.new(:access_token => access_token)
-
-client.auto_paginate = true
-user = client.user
-user.login
-
-@organizations = config.map do |org, attributes|
-  Organization.new(
-    name: org,
-    attributes: attributes,
-    client: client,
-  )
-end
+config = Prrr::Config.new
+logger = Prrr::Logger.new
+client = config.client
 
 while true
-  @organizations.each do |organization|
+  config.organizations.each do |organization|
     reviewer_team = organization.reviewer_team
     reviewer_team.refresh!
 
