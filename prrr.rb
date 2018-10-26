@@ -38,8 +38,6 @@ while true
     )
 
     repositories.each do |repository|
-      logger.info("checking repo #{repository.full_name}")
-
       if @most_recent_check
         next unless repository.pushed_at.utc > @most_recent_check.utc
       end
