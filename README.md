@@ -21,10 +21,7 @@ services:
     image: asr-docker-local.artifactory.umn.edu/prrr:0.2.0
     restart: always
     environment:
-      - PRRR_ORGANIZATION=asrweb
-      - PRRR_REPOSITORY=student_athletes
       - PRRR_ACCESS_TOKEN=3102c1f0692be0986bbc0358f9285eb1fc99f334
-      - PRRR_REVIEW_TEAM=reviewers
 ```
 
 A brief description of these environment variables and what they do:
@@ -62,6 +59,14 @@ asrweb:
   review_team: reviewers
 ```
 
+If you want to watch all repositories within the organization, leave out the repository key:
+
+```yml
+---
+asrweb:
+  review_team: reviewers
+```
+
 #### Review Team
 
 The team of GitHub users you want reviewing Pull Requests.
@@ -70,7 +75,7 @@ In your GitHub organization, [create a team](https://help.github.com/articles/cr
 
 #### Limitations
 
-Currently you can only have one organization and one repository. Additional repositories will be ignored.
+Currently you can only have one organization. Additional organizations will be ignored.
 
 ## Usage
 
