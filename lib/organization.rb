@@ -3,9 +3,13 @@ require_relative "./reviewer_team"
 class Organization
   attr_reader :name, :reviewer_team, :repositories
 
-  def initialize(name:, attributes:)
+  def initialize(name:, attributes:, client:)
     self.name = name
-    self.reviewer_team = ReviewerTeam.new(organization: name, name: attributes.fetch("review_team"))
+    self.reviewer_team = ReviewerTeam.new(
+                          organization: name,
+                          name: attributes.fetch("review_team"),
+                          client: client
+                         )
     self.repositories = attributes["repositories"].to_a
   end
 

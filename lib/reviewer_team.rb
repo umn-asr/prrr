@@ -1,5 +1,5 @@
 class ReviewerTeam
-  def initialize(organization:, name:, client: PRRR_CLIENT)
+  def initialize(organization:, name:, client:)
     self.organization = organization
     self.name = name
     self.client = client
