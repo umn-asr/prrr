@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Changed
 
+- Support for all or specified repos within a single org, [#4](https://github.umn.edu/asrweb/prrr/issues/4)
 - GitHub config now done in yaml, [#8](https://github.umn.edu/asrweb/prrr/pull/8)
 - Review Team members are now kept up to date, [#7](https://github.umn.edu/asrweb/prrr/pull/7)
 
