@@ -67,15 +67,23 @@ asrweb:
   review_team: reviewers
 ```
 
+If you want multiple organizations, each will need their own review_team.
+
+```yml
+---
+asrweb:
+  review_team: reviewers
+docker:
+  review_team: docker_helpers
+ansible-roles:
+  review_team: ansible_committee
+```
+
 #### Review Team
 
 The team of GitHub users you want reviewing Pull Requests.
 
 In your GitHub organization, [create a team](https://help.github.com/articles/creating-a-team/) of people you want to review Pull Requests. You can call this team whatever you'd like.
-
-#### Limitations
-
-Currently you can only have one organization. Additional organizations will be ignored.
 
 ## Usage
 
