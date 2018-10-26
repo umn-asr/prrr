@@ -25,10 +25,6 @@ module Prrr
         )
 
         repositories.each do |repository|
-          if @most_recent_check
-            next unless repository.pushed_at.utc > @most_recent_check.utc
-          end
-
           client.pull_requests(repository.full_name, state: 'open').each do |pr|
             reviewed = client.pull_request_reviews(repository.full_name, pr.number).any?
             requested = client.pull_request_review_requests(repository.full_name, pr.number)[:users].any?
@@ -46,8 +42,6 @@ module Prrr
           sleep 1
         end
       end
-
-      @most_recent_check = Time.now
     end
   end
 end
