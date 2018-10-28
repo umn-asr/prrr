@@ -24,6 +24,7 @@ services:
       - ${PWD}/config.yml:/usr/src/app/config.yml
     environment:
       - PRRR_ACCESS_TOKEN=3102c1f0692be0986bbc0358f9285eb1fc99f334
+      - PRRR_GITHUB_URL=https://github.umn.edu/api/v3/
 ```
 
 ### PRRR Access Token
@@ -36,6 +37,14 @@ You will need a GitHub Personal Access token so that PRRR can interact with GitH
 - Choose `repo`
 - Click the Generate Token button
 - Place your token in the `docker-compose.yml` file
+
+### PRRR GitHub URL
+
+Set this to the `v3` API endpoint for the GitHub host where your repositories live.
+
+PRRR can only interact with a single GitHub host. If you want to watch two GitHub hosts, run two instances of PRRR.
+
+Set this to `https://api.github.com` if using GitHub.com.
 
 ### `config.yml`
 
