@@ -5,10 +5,6 @@ require "yaml"
 
 module Prrr
   def self.run
-    Octokit.configure do |c|
-      c.api_endpoint = "https://github.umn.edu/api/v3/"
-    end
-
     config = Prrr::Config.new
     logger = Prrr::Logger.new
     client = config.client

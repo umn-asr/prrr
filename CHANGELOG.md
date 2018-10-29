@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### Added
+
+- Ability to configure the API endpoint. [#26](https://github.umn.edu/asrweb/prrr/issues/26)
+
 ## [0.3.3]
 
 ### Fixed
